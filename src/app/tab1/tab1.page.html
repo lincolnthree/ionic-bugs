@@ -13,5 +13,16 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-segment #segment [value]="segment" [swipeGesture]=false
+    (ionChange)="updateSegment(segment.value)">
+    <ion-segment-button *ngFor="let seg of segments"
+      [disabled]='seg === "rulings"'
+      [value]="seg">
+      <ion-label>{{ seg | titlecase }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  segment value is: {{ segment }}
+
   <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>

@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  public segments = ['general', 'detail', 'versions', 'rulings', 'other'];
+  public segment = 'detail';
+
+  updateSegment(value: string | undefined){
+    this.segment = value as string;
+  }
 
 }
