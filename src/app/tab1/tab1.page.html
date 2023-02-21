@@ -13,26 +13,25 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item>
-    <ion-label id="foo">legacy</ion-label>
-    <ion-select slot="end" placeholder="foo" [value]="'foo'">
-      <ion-select-option value="asdf">asdf</ion-select-option>
+  <div>
+    <ion-select slot="end" placeholder="1" [value]="'1'">
+      <ion-select-option value="abc">1</ion-select-option>
     </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-select placeholder="bar" [value]="'bar'" label="label attr">
-      <ion-select-option value="bar">bar</ion-select-option>
+    <ion-select slot="end" placeholder="2" [value]="'2'" aria-label="2">
+      <ion-select-option value="2">2</ion-select-option>
     </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label id="baz">aria-labelledby attr</ion-label>
-    <ion-select slot="end" placeholder="baz" [value]="'baz'" aria-labelledby="baz">
-      <ion-select-option value="bar">baz</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-select placeholder="cab" [value]="'cab'" aria-label="cab">
-      <ion-select-option value="cab">cab</ion-select-option>
-    </ion-select>
-  </ion-item>
+  </div>
+
+
+  <ion-select slot="end" placeholder="3" [value]="'3'" aria-label="3">
+    <ion-select-option value="def">3</ion-select-option>
+  </ion-select>
+  <ion-select slot="end" placeholder="4" [value]="'4'">
+    <ion-select-option value="asdf">4</ion-select-option>
+  </ion-select>
+
+  <ion-select placeholder="5" [value]="'5'" label="5">
+    <ion-select-option value="5">5</ion-select-option>
+  </ion-select>
+
 </ion-content>
