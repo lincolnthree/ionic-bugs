@@ -13,11 +13,19 @@
     </ion-toolbar>
   </ion-header>
 
-  <ng-container *ngIf="ui$ | async as ui">
-    <ng-content *ngTemplateOutlet="segmentsTemplate; context: { ui: ui }"></ng-content>
-  </ng-container>
+
+  <ion-toolbar>
+    <ion-segment #ionSeg [value]="segment$ | async" [swipeGesture]=false (ionChange)="updateSegment(ionSeg.value)">
+      <ion-segment-button *ngFor="let seg of segments" [disabled]='seg === "rulings"' [value]="seg">
+        <ion-label>{{ seg | titlecase }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
   segment value is: {{ segment$ | async }}
+  <br>
+  <ion-button (click)="updateSegment('general')">general</ion-button>
+  <ion-button (click)="updateSegment('versions')">versions</ion-button>
 
   <app-explore-container name="Tab 1 page"></app-explore-container>
 
@@ -29,14 +37,3 @@
   </ion-item>
 </ion-content>
 
-<ng-template #segmentsTemplate let-ui="ui">
-  <ng-container *ngIf="ui['1'] as randoval">
-    <ion-toolbar>
-      <ion-segment #ionSeg [value]="segment$ | async" [swipeGesture]=false (ionChange)="updateSegment2(ionSeg.value)">
-        <ion-segment-button *ngFor="let seg of (segments$ | async)" [disabled]='seg === "rulings"' [value]="seg">
-          <ion-label>{{ seg | titlecase }}</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
-  </ng-container>
-</ng-template>
