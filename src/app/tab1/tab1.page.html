@@ -13,27 +13,63 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-list>
 
-  <ion-toolbar>
-    <ion-segment #ionSeg [value]="segment$ | async" [swipeGesture]=false (ionChange)="updateSegment(ionSeg.value)">
-      <ion-segment-button *ngFor="let seg of segments" [disabled]='seg === "rulings"' [value]="seg">
-        <ion-label>{{ seg | titlecase }}</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
+    <ion-item-divider>
+      Non-input, non-form item:
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>
+        First label
+      </ion-label>
+      <ion-label>
+        Second label
+      </ion-label>
+    </ion-item>
 
-  segment value is: {{ segment$ | async }}
-  <br>
-  <ion-button (click)="updateSegment('general')">general</ion-button>
-  <ion-button (click)="updateSegment('versions')">versions</ion-button>
+    <ion-item-divider>
+      With ion-label (legacy form syntax) Note how the ion-item uses flex column layout:
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>
+        First label
+      </ion-label>
+      <ion-label>
+        Second label
+      </ion-label>
+      <ion-select [value]="displayMode" placeholder="View mode" [legacy]="true">
+        <ion-select-option *ngFor="let mode of displayModes" [value]="mode">
+          {{ mode }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-item-divider>
+      With ion-label (modern form syntax) It is no longer possible to put additional content into the item
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>
+        First label
+      </ion-label>
+      <ion-select [value]="groupByMode" placeholder="Group by" aria-label="Group by">
+        <ion-select-option *ngFor="let mode of groupByModes" [value]="mode">
+          {{ mode }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
 
-  <ion-item>
-    <ion-label>Foo</ion-label>
-    <ion-select placeholder="foo" [interfaceOptions]="{ header: 'header'}" [value]="segment$ | async">
-      <ion-select-option value="asdf">asdf</ion-select-option>
-    </ion-select>
-  </ion-item>
+    <ion-item-divider>
+      With ion-label class=ion-text-wrap (modern form syntax) - clicking above or below the select element results in a failed interaction
+    </ion-item-divider>
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        First label
+      </ion-label>
+      <ion-select [value]="groupByMode" placeholder="Group by" aria-label="Group by">
+        <ion-select-option *ngFor="let mode of groupByModes" [value]="mode">
+          {{ mode }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>
-

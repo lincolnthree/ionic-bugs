@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+
 
 import { Component } from '@angular/core';
 
@@ -9,13 +9,10 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  public segments = ['general', 'detail', 'versions'];
-  public segment$ = new BehaviorSubject<string>('general');
+  displayMode = 'visual'
+  displayModes = ['visual', 'list', 'compact'];
 
 
-  updateSegment(value: string | null | undefined) {
-    console.error('updating segment value', value)
-    this.segment$.next(value as string);
-  }
-
+  groupByMode = 'first'
+  groupByModes = ['first', 'last', 'any'];
 }
