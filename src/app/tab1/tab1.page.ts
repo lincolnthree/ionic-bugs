@@ -8,11 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
-  displayMode = 'visual'
-  displayModes = ['visual', 'list', 'compact'];
-
-
-  groupByMode = 'first'
-  groupByModes = ['first', 'last', 'any'];
+  backHref = "/tabs/tab2?param=anything" 
 }
