@@ -1,29 +1,64 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-buttons slot=start>
+      <ion-button slot=end fill=clear (click)="reload(true)">
+        <ion-toggle (ionChange)="toggle()" [checked]="optionsEnabled"></ion-toggle>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>List of Sliding Items</ion-title>
+    <ion-buttons slot=end>
+      <ion-button slot=end fill=clear (click)="reload(true)">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item-sliding *ngFor="let i of items">
+      <ion-item-options side=start>
+        <ng-container *ngIf="optionsEnabled">
+          <ion-item-option slot=start color="primary">
+            <ion-icon slot=top name="chevron-back">
+            </ion-icon>
+          </ion-item-option>
 
-  <ion-select aria-label="Fruit" placeholder="Legacy" [legacy]="true">
-    <ion-select-option value="apples">Apples</ion-select-option>
-    <ion-select-option value="oranges">Oranges</ion-select-option>
-    <ion-select-option value="bananas">Bananas</ion-select-option>
-  </ion-select>
+          <ion-item-option color="secondary">
+            <ion-icon slot=top name="chevron-forward">
+            </ion-icon>
+          </ion-item-option>
 
+          <ion-item-option color="tertiary">
+            <ion-icon slot=top name="chevron-up">
+            </ion-icon>
+          </ion-item-option>
+        </ng-container>
+      </ion-item-options>
 
-  <ion-select aria-label="Fruit" placeholder="Modern">
-    <ion-select-option value="apples">Apples</ion-select-option>
-    <ion-select-option value="oranges">Oranges</ion-select-option>
-    <ion-select-option value="bananas">Bananas</ion-select-option>
-  </ion-select>
+      <ion-item [button]=true>
+        <ion-label>{{i}}</ion-label>
 
+        <ion-button slot=end fill=clear>
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item-options side=end>
+        <ng-container *ngIf="optionsEnabled">
+
+          <ion-item-option color="primary">
+            <ion-icon slot=top name="chevron-back">
+            </ion-icon>
+          </ion-item-option>
+
+          <ion-item-option color="secondary">
+            <ion-icon slot=top name="chevron-forward">
+            </ion-icon>
+          </ion-item-option>
+
+        </ng-container>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
